@@ -20,38 +20,58 @@ const quiz = [
     options: ["1965", "1969", "1972", "1980"],
     reponse: "1965",
   },
+  {
+    question: "Q4",
+    options: ["1965", "1969", "1972", "1980"],
+    reponse: "1965",
+  },
+  {
+    question: "Q5",
+    options: ["1965", "1969", "1972", "1980"],
+    reponse: "1965",
+  },
+  {
+    question: "Quiz terminé",
+    options: ["1965", "1969", "1972", "1980"],
+    reponse: "1965",
+  },
 ];
 const titleQuiz = document.querySelector(".quiz_title");
 const questionText = document.querySelector(".quiz_question");
 const options = document.querySelectorAll("button");
 let score = 0;
+let indexQuestion = 0;
 
 const startQuiz = () => {
-  let indexQuestion = 0;
-
   questionText.innerHTML = quiz[indexQuestion].question;
   options.forEach((button, indexOption) => {
     button.innerHTML = quiz[indexQuestion].options[indexOption];
     button.addEventListener("click", (e) => {
-      console.log(
-        `Option n°${indexOption + 1} sélectionnée :`,
-        e.target.textContent
-      );
-      if (checkAnswer(e.target.textContent, indexQuestion)) {
-        score++;
-      }
+      checkAnswer(e.target.textContent, indexQuestion);
+      indexQuestion++;
+      nextQuestion();
     });
   });
 };
 
 const checkAnswer = (optionSelected, indexQuestion) => {
-  if (optionSelected == quiz[indexQuestion].reponse) {
-    titleQuiz.innerHTML = "Bonne réponse !";
-    return true;
+  if (quiz[indexQuestion].question != "Quiz terminé") {
+    if (optionSelected == quiz[indexQuestion].reponse) {
+      titleQuiz.innerHTML = "Bonne réponse !";
+      score++;
+    } else {
+      titleQuiz.innerHTML = "Mauvaise réponse !";
+    }
   } else {
-    titleQuiz.innerHTML = "Mauvaise réponse !";
-    return false;
+    titleQuiz.innerHTML = "Quiz terminé !";
   }
+};
+
+const nextQuestion = () => {
+  questionText.innerHTML = quiz[indexQuestion].question;
+  options.forEach((button, indexOption) => {
+    button.innerHTML = quiz[indexQuestion].options[indexOption];
+  });
 };
 
 startQuiz();
