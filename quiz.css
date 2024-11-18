@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: green;
+}
+
+.quiz_container {
+    padding: 300px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgb(235, 228, 228);
+}
+
+.quiz_title {
+    position: relative;
+    font-size: 5rem;
+    color: black;
+}
+
+.quiz_question {
+    font-size: 1.4rem;
+    margin: 20px 0;
+    color: #333;
+}
+
+.quiz_options {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.quiz_option {
+    color: #333;
+    background-color: white;
+    border: 2px;
+}
