@@ -21,16 +21,37 @@ const quiz = [
     reponse: "1965",
   },
 ];
+const titleQuiz = document.querySelector(".quiz_title");
 const questionText = document.querySelector(".quiz_question");
 const options = document.querySelectorAll("button");
+let score = 0;
 
 const startQuiz = () => {
-  options.forEach((option, index) => {
-    console.log("option n°", index, " sélectionnée.");
-    /*
-    
-    */
+  let indexQuestion = 0;
+
+  questionText.innerHTML = quiz[indexQuestion].question;
+  options.forEach((button, indexOption) => {
+    button.innerHTML = quiz[indexQuestion].options[indexOption];
+    button.addEventListener("click", (e) => {
+      console.log(
+        `Option n°${indexOption + 1} sélectionnée :`,
+        e.target.textContent
+      );
+      if (checkAnswer(e.target.textContent, indexQuestion)) {
+        score++;
+      }
+    });
   });
+};
+
+const checkAnswer = (optionSelected, indexQuestion) => {
+  if (optionSelected == quiz[indexQuestion].reponse) {
+    titleQuiz.innerHTML = "Bonne réponse !";
+    return true;
+  } else {
+    titleQuiz.innerHTML = "Mauvaise réponse !";
+    return false;
+  }
 };
 
 startQuiz();
