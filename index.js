@@ -12,7 +12,7 @@ const quiz = [
       "Océan Indien",
       "Océan Arctique",
     ],
-    reponse: "Océan Atlantique",
+    reponse: "Océan Pacifique",
   },
   {
     question:
@@ -23,7 +23,7 @@ const quiz = [
   {
     question: "Q4",
     options: ["1965", "1969", "1972", "1980"],
-    reponse: "1965",
+    reponse: "1969",
   },
   {
     question: "Q5",
